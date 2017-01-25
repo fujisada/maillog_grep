@@ -1,2 +1,5 @@
 # maillog_grep
-learn shell script to create support tool to grep maillog
+
+* シェルスクリプトの勉強も兼ねてメールログ検索用スクリプトを自作。
+* 最終的には、バウンスしたメールを辿れるようにしたい
+  * （このメールの送信失敗 -> このメールを送信した、とか）
