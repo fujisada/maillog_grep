@@ -14,7 +14,7 @@ target=$1
 
 #echo -e ${HASH_COLOR}foo${COLOR_OFF}
 
-foo=$(sudo cat /var/log/maillog | grep $target | grep -v "connect from" | cut -d ":" -f 4)
+foo=$(sudo cat /var/log/maillog | grep $target | grep -v "connect from" | cut -d ":" -f 4 | uniq)
 
 for hash in $foo; do
   echo -e $HASH_COLOR''$hash''$COLOR_OFF
