@@ -14,11 +14,13 @@ target=$1
 
 #echo -e ${HASH_COLOR}foo${COLOR_OFF}
 
-foo=$(sudo cat /var/log/maillog | grep $target | grep -v "connect from" | cut -d ":" -f 4 | uniq)
+inputs=$(cat < /dev/stdin);
+
+foo=$(echo "$inputs" | grep $target | grep -v "connect from" | cut -d ":" -f 4 | uniq)
 
 for hash in $foo; do
   echo -e $HASH_COLOR''$hash''$COLOR_OFF
-  line=$(sudo cat /var/log/maillog \
+  line=$(echo "$inputs" \
     | grep $hash \
     | sed -e 's#'$hash'#\'$HASH_COLOR$hash'\'$COLOR_OFF'#g' \
     | sed -e 's#'$target'#\'$TARGET_COLOR$target'\'$COLOR_OFF'#g' \
